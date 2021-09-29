@@ -20,6 +20,9 @@ pipeline {
                    'Auto GPS-SDL_MMCP_TC',
                    'Block IV Non-GPS_MMCP_TC',
                    'Specific Tasks_MMCP_TC',
+                   'Cancel_MM_TC',
+                   'Interface VLS Maintain_MM_TC',
+                   'SM3 Basic_MM_TC',
                    'ALL'
                ],
                description: 'Select a Testcase to run')
