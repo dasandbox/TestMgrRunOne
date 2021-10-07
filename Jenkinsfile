@@ -21,6 +21,7 @@ pipeline {
                    'Block IV Non-GPS_MMCP_TC',
                    'Specific Tasks_MMCP_TC',
                    'Cancel_MM_TC',
+                   'Interface VLS INV and Config_MM_TC',
                    'Interface VLS Maintain_MM_TC',
                    'SM3 Basic_MM_TC',
                    'ALL'
