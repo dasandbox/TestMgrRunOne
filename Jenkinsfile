@@ -27,13 +27,19 @@ pipeline {
                    'ALL'
                ],
                description: 'Select a Testcase to run')
+        choice(name: 'Baseline',
+               choices: [
+                   'TTWCS_Baseline_5_6_1',
+                   'TTWCS_Baseline_5_6_0'
+               ],
+               description: 'Baseline')
     }
 
     stages {
         stage('Init') {
             steps {
                 echo "Stage: Init"
-                echo "branch=${env.BRANCH_NAME}, test=${params.TestName}"
+                echo "branch=${env.BRANCH_NAME}, test=${params.TestName}, baseline=${params.Baseline}"
             }
         }
         stage('Common Config') {
@@ -104,7 +110,11 @@ pipeline {
                     script {
                         def idtag = sh(script: "cat currentDxFile", returnStdout: true).trim()
                         echo "Start Analysis Manager Job with idtag=${idtag}"
-                        build(job: '/AnalysisMgr/main', parameters: [string(name: 'idtag', value: "${idtag}")], wait: true)
+                        build(job: '/AnalysisMgr/main', parameters: 
+                              [
+                                  string(name: 'idtag', value: "${idtag}"),
+                                  string(name: 'baseline', value: "${params.Baseline}")
+                              ], wait: true)
                     }
                 }
             }
