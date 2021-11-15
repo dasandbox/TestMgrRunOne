@@ -27,7 +27,7 @@ pipeline {
                    'ALL'
                ],
                description: 'Select a Testcase to run')
-        choice(name: 'Baseline',
+        choice(name: 'baseline',
                choices: [
                    'TTWCS_Baseline_5_6_1',
                    'TTWCS_Baseline_5_6_0'
@@ -39,7 +39,7 @@ pipeline {
         stage('Init') {
             steps {
                 echo "Stage: Init"
-                echo "branch=${env.BRANCH_NAME}, test=${params.TestName}, baseline=${params.Baseline}"
+                echo "branch=${env.BRANCH_NAME}, test=${params.TestName}, baseline=${params.baseline}"
             }
         }
         stage('Common Config') {
@@ -113,7 +113,7 @@ pipeline {
                         build(job: '/AnalysisMgr/main', parameters: 
                               [
                                   string(name: 'idtag', value: "${idtag}"),
-                                  string(name: 'baseline', value: "${params.Baseline}")
+                                  string(name: 'baseline', value: "${params.baseline}")
                               ], wait: true)
                     }
                 }
