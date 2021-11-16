@@ -23,8 +23,7 @@ pipeline {
                    'Cancel_MM_TC',
                    'Interface VLS INV and Config_MM_TC',
                    'Interface VLS Maintain_MM_TC',
-                   'SM3 Basic_MM_TC',
-                   'ALL'
+                   'SM3 Basic_MM_TC'
                ],
                description: 'Select a Testcase to run')
         choice(name: 'baseline',
