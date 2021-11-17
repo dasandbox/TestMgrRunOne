@@ -14,16 +14,16 @@ pipeline {
     parameters {
         choice(name: 'TestName',
                choices: [
-                   'Basic GoPath_TC',
-                   'Allocation Mode_MMCP_TC',
-                   'Allocation Required_MMCP_TC',
-                   'Auto GPS-SDL_MMCP_TC',
-                   'Block IV Non-GPS_MMCP_TC',
-                   'Specific Tasks_MMCP_TC',
-                   'Cancel_MM_TC',
-                   'Interface VLS INV and Config_MM_TC',
-                   'Interface VLS Maintain_MM_TC',
-                   'SM3 Basic_MM_TC'
+                    'Basic GoPath_TC',
+                    'Allocation Mode_MMCP_TC',
+                    'Allocation Required_MMCP_TC',
+                    'Auto GPS-SDL_MMCP_TC',
+                    'Block IV Non-GPS_MMCP_TC',
+                    'Cancel_MM_TC',
+                    'Interface VLS INV and Config_MM_TC',
+                    'Interface VLS Maintain_MM_TC',
+                    'SM3 Basic_MM_TC',
+                    'Specific Tasks_MMCP_TC'
                ],
                description: 'Select a Testcase to run')
         choice(name: 'baseline',
@@ -109,7 +109,7 @@ pipeline {
                     script {
                         def idtag = sh(script: "cat currentDxFile", returnStdout: true).trim()
                         echo "Start Analysis Manager Job with idtag=${idtag}"
-                        build(job: '/AnalysisMgr/main', parameters: 
+                        build(job: '/AnalysisMgr/main', parameters:
                               [
                                   string(name: 'idtag', value: "${idtag}"),
                                   string(name: 'baseline', value: "${params.baseline}")
